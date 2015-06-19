@@ -1,0 +1,51 @@
+﻿*{
+	font-family:"微软雅黑";
+	font-size:12px;
+}
+.bg-div{
+    position:relative;
+}
+.bg-img{
+    width:100%;
+    height:auto;
+}
+.iphone-div{
+    position:absolute;
+    height:90%;
+    width:25%;
+    background-image:url(../img/index/iphone.png);
+    background-size:auto 100%;
+    background-repeat:no-repeat;
+    top:22%;
+    left:10%;
+}
+.iphone-div img{
+    height:70%;
+    width:58%;
+    position:relative;
+    top:13.5%;
+    left:14%;    
+}
+.btn-div{
+    text-align:center;
+    margin-top:60px;
+}
+.btn-div input{
+    height:150px;
+    width:auto;
+}
+@media(max-width:768px){
+    .btn-div input{
+        width:80%;
+        max-width:120px;
+        height:auto;
+    }
+}
+@media(min-width:768px){
+    .btn-div2{
+        text-align:right;
+    }
+    .btn-div4{
+        text-align:left;
+    }
+}
