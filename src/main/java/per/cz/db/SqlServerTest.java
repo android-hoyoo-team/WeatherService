@@ -23,7 +23,9 @@ public class SqlServerTest {
 //		String data4AcResult = DBUtil.getData4QRAcResult(LocalDBConfig.DRIVER, LocalDBConfig.URL+LocalDBConfig.DBNAME, LocalDBConfig.UNAME, LocalDBConfig.PWD,"SELECT empNO AS 工号, personName AS 姓名 ,personType AS 用户,oInpatientArea AS  病区,oCellName AS 位置 ,InOutType AS 动作,nTime AS 时间 FROM `r_suttagrecord_view` where empNO is not null  and (personName like '%三%' or empNO like '%三%') order by nTime",0,0);
 //		//System.out.println(data4AcResult);
 		
-		String tableData1 = DBUtil.getData4QRListMap("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://192.168.2.55", "q", "1", "select count(*) as c from zgxj_护士站医嘱执行单",0,0);
+		String tableData1 = DBUtil.getData4QRListMap("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://61.164.175.158:8327;DatabaseName=JhPanWeather", "public@58560", "public@58560", "select dbo.fnGetDistance(东经,北纬,120.35,28.90) as ss from T_Station_Area",0,0);
+		System.out.println(tableData1);
+//		String tableData1 = DBUtil.getData4QRListMap("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://192.168.2.55", "q", "1", "select count(*) as c from zgxj_护士站医嘱执行单",0,0);
 		//System.out.println(tableData1);
 //		String tableData = DBUtil.getData4QRListMap("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://192.168.2.55", "q", "1", "select * from zgxj_护士站医嘱执行单",0,0);
 //		//System.out.println(tableData);

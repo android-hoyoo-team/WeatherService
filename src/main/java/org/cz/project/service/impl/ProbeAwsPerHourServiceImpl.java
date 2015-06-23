@@ -17,25 +17,18 @@ public class ProbeAwsPerHourServiceImpl implements ProbeAwsPerHourService {
 
 	@Override
 	@Transactional
-	public ProbeAwsPerHour getLatestProbeAwsPerHour(Map<String,Object> jsonParam) {
-		// TODO Auto-generated method stub
-		//baseDao.find(hql, params, start, length);
-//		List find2 = baseDao.find("from TStationArea", 0, 1);
-//		System.out.println(find2);
-		System.out.println("params:"+jsonParam.get("longitude")+","+jsonParam.get("latitude"));
-//		String hql ="select fnGetDistance(120.35,80.0,120.35,29.91)  as f from TStationArea t";
-		String hql ="select fnGetDistance(longitude)  as f from TStationArea t";
-		//String hql = "select Max(longitude) from TStationArea";
-		List stations = baseDao.find(hql);
-		//List stations = baseDao.find(hql, jsonParam, 0, 1);
-		System.out.println("ppp:"+stations.get(0));
-//		TStationArea station = null;
-//		if(stations!=null){
-//			station = (TStationArea) stations.get(0);
-//		}
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("stationNum", "K6079");
-		List find = baseDao.find("from ProbeAwsPerHour p where p.stationNum=:stationNum", map,0, 1);
-		 return (ProbeAwsPerHour) find.get(0);
+	public ProbeAwsPerHour getLatestProbeAwsPerHour(Map<String,Object> param) {
+		System.out.println("params:"+param.get("longitude")+","+param.get("latitude"));
+		String hql ="select  new map(fn_get_distance(t.longitude,t.latitude,:longitude,:latitude) as distance,t.stationNum as stationNum) from TStationArea t order by distance";
+		List<Map> stations = baseDao.find(hql,param,0,1);
+		System.out.println(stations);
+		if(stations.size()>0)
+		{
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("stationNum", stations.get(0).get("stationNum"));
+			List find = baseDao.find("from ProbeAwsPerHour p where p.stationNum=:stationNum order by p.id desc", map,0, 1);
+			return (ProbeAwsPerHour) find.get(0);
+		}
+		return null;
 	}
 }
