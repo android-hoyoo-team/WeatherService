@@ -4,7 +4,7 @@ DataTablesUtils.getDefaultOption=function()
 	return {
 		"bPaginate" : true,//翻页功能
 		"bSort" : false,
-		"bJQueryUI" : true,
+		//"bJQueryUI" : true,
 		"sPaginationType" : "full_numbers",
 		//	        "sPaginationType": "bootstrap",
 		"bRetrieve" : true,

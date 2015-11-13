@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" type="text/css" rel="stylesheet" />
+    <link href="css/lightbox/lightbox.css" type="text/css" rel="stylesheet" />
+    <link href="css/headerStyle.css" type="text/css" rel="stylesheet" />
+    <link href="css/cehuacss/component.css" type="text/css" rel="stylesheet" />
+    <link href="css/footStyle.css" type="text/css" rel="stylesheet" />
+    <link href="css/headerStyle.css" type="text/css" rel="stylesheet" />    
+    <link href="css/swiper/swiper.min.css" type="text/css" rel="stylesheet" />    
+    <link rel="stylesheet" href="css/master.css" type="text/css" />
+    <!-- <link href="css/mainStyle.css" type="text/css" rel="stylesheet" />
+    <link href="css/tianqiyubaoStyle.css" type="text/css" rel="stylesheet" />
+    <link href="css/qingxinzhishu.css" type="text/css" rel="stylesheet" />
+    <link href="css/shushizhishu.css" type="text/css" rel="stylesheet" />
+    <link href="css/youjiangStyle.css" type="text/css" rel="stylesheet" /> -->
+    <!--<link href="css/indexStyle.css" type="text/css" rel="stylesheet" />
+    <link href="css/register.css" type="text/css" rel="stylesheet" /> -->
+    <style>
+    * {
+        color: white;
+        font-family: 微软雅黑;
+        text-shadow: none;
+        font-size: 12px;
+    }
+    
+    body {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        /*overflow: hidden;*/
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    
+    </style>
+    <script src="cordova.js"></script>
+    <script src="js/jquery-1.11.2/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+    <script src="js/fusioncharts/fusioncharts.js"></script>
+    <script src="js/fusioncharts/fusioncharts.theme.fint.js"></script>
+    <!--        <script src="js/swiper/swiper.min.js"></script>
+     <script src="js/fusioncharts/fusioncharts.js"></script>
+     <script src="js/fusioncharts/fusioncharts.theme.fint.js"></script>
+     <script src="js/per/ex/Class.js"></script>
+     <script src="js/per/ex/Utils.js"></script>
+     <script src="js/per/ex/ArrayUtils.js"></script>
+     <script src="js/per/ex/DateUtils.js"></script>
+     <script src="js/per/ex/StringUtils.js"></script>
+     <script src="js/per/class/camera.js"></script>
+     <script src="js/ajaxfileupload/ajaxfileupload.js"></script>
+     <script src="js/store.js/store.js"></script>
+     <script src="js/store.js/local_store.js"></script>
+     <script src="js/cehuajs/classie.js"></script>
+     <script src="js/easydialog/easydialog.min.js"></script>
+     <script src="js/blockUI/blockUI.js"></script>
+     <script src="js/lightbox/lightbox.js"></script>
+     <script src="js/fakecrop/jquery.fakecrop.js"></script>
+     <script src="js/awardRotate.js"></script>
+     <script src="js/master.js"></script>
+      -->
+</head>
+
+<body>
+    <div data-role="page" id="all">
+        <div id="guanggao">
+            <img src="img/guanggao/guanggao1.jpg"/>
+        </div>
+        <div class="bg-div" id="bg_7" style="background-image:url(img/all_bg_7.jpg)"></div>
+        <div class="bg-div" id="bg_6" style="background-image:url(img/all_bg_6.jpg)"></div>
+        <div class="bg-div" id="bg_5" style="background-image:url(img/all_bg_5.jpg)"></div>
+        <div class="bg-div" id="bg_4" style="background-image:url(img/all_bg_4.jpg);"></div>
+        <div class="bg-div" id="bg_3" style="background-image:url(img/all_bg_3.jpg);"></div>
+        <div class="bg-div" id="bg_2" style="background-image:url(img/all_bg_2.jpg);"></div>
+        <div class="bg-div" id="bg_1" style="background-image:url(img/all_bg_1.jpg);"></div>
+        <div class="bg-div" id="bg_0" style="background-image:url(img/all_bg_0.png);"></div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" id="main">
+                <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+                    <h3 class="ui-grid-a">
+                        <div class="ui-block-a" id="userName">
+                            <a href="#" id="loginDialogBtn">登录</a>
+                            <a onclick='return false' id="login_user_txt"></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <input id="exitBtn" type="image" src="img/exit.png"/>
+                        </div>
+                    </h3>
+                    <a id="zhongjiangBtn" href="#">我的信箱</a>
+                    <a id="fankuiBtn" href="#">意见反馈</a>
+                    <a id="guanyuBtn" href="#">关于我们</a>
+                    <a id="bangzhuBtn" href="#">帮助</a>
+                </div>
+                <div class="swiper-container swiper-container-main" id="swiper_container_main">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="swiper-container swiper-container-zhaopianqiang">
+                                <div class="swiper-wrapper" id="photoWall">
+                                    <!-- <div class="photo-wall-item">
+                                        <div class="photo-box">
+                                            <img src="img/pubuliu/1.jpg" onloadeddata="aaa" />
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="swiper-scrollbar swiper-scrollbar-zhaopianqiang"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" id="shouye">
+                            <div class="swiper-container swiper-container-shouye">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" id="div_iframe_shouye">
+                                        <div class="box0 ui-grid-b" id="box0">
+                                            <div class="ui-block-a" id="cehuaBtn">
+                                                <img src="img/cehuaBtn.png" class="box0-cehua-btn" />
+                                            </div>
+                                            <div class="ui-block-b" id="box0_address_div">
+                                                <span id="box0_address">正在获取当前位置...</span>
+                                                <br/>
+                                                <span id="currentDate" class="current-time"></span>
+                                            </div>
+                                            <div class="ui-block-c" id="cameraBtn">
+                                                <img class="box0-camera-btn" src="img/camera.png" />
+                                            </div>
+                                        </div>
+                                        <div class="box2">
+                                            <img class="box2-title" src="img/title.png" />
+                                            <img class="box2-girl" src="img/girl.png" />
+                                        </div>
+                                        <div class="box4">
+                                            <div class="box4-title">
+                                                <span class="box4-title-span1">负氧离子&nbsp;&nbsp;</span>
+                                                <span class="box4-title-span2">(个/cm<sup>3</sup>)</span>
+                                            </div>
+                                            <div class="box4_con">
+                                                <div class="ui-grid-a">
+                                                    <div class="ui-block-a">
+                                                        <div id="chartContainer3"></div>
+                                                        <div id="ion_maxnum_replace">
+                                                            <img src="img/arrow_3000.png">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-block-b">
+                                                        <p id="main_box4_ion1">---</p>
+                                                        <div id="o2_station_div"></div>
+                                                        <!-- <p class="box4-ion-p2" id="main_box4_ion2_xihu">--</p> -->
+                                                        <!-- <p class="box4-ion-p2" id="main_box4_ion2_xixi" style="display:none;">--</p> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box5">
+                                            <div class="box5-title">
+                                                <span class="box5-title-span1">PM2.5&nbsp;&nbsp;</span>
+                                                <span class="box5-title-span2">(ug/m<sup>3</sup>)</span>
+                                            </div>
+                                            <div class="box5_con">
+                                                <div class="ui-grid-a">
+                                                    <div class="ui-block-a">
+                                                        <div id="chartContainer2"></div>
+                                                    </div>
+                                                    <div class="ui-block-b">
+                                                        <p id="main_box5_quality1">---</p>
+                                                        <p class="box5-pm25-p2" id="main_box5_quality2">---</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-scrollbar swiper-scrollbar-shouye"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" id="tianqiyubao">
+                <div class="headerBar">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a backToMain">
+                            <img src="img/backBtn.png" />
+                        </div>
+                        <div class="ui-block-b">
+                            <h4>天气预报</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_iframe_tianqiyubao">
+                    <div class="swiper-container swiper-container-tianqiyubao">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="box1">
+                                    <span id="b_currentDate" class="current-time"></span>
+                                </div>
+                                <div class="box3">
+                                    <div class="box3-title">
+                                        <h4>当前实况</h4>
+                                    </div>
+                                    <div class="title-divider"></div>
+                                    <div class="ui-grid-a box3_con">
+                                        <div class="ui-block-a block1">
+                                            <img id="main_box3_icon1" src="img\main_box3_icon1.png" />
+                                        </div>
+                                        <div class="ui-block-b block2">
+                                            <p id="main_box3_weather">晴</p>
+                                            <div class="main-box3-divider"></div>
+                                            <div class="ui-grid-b  box3-current-detail">
+                                                <div class="ui-block-a">
+                                                    <p id="main_box3_temp1">温度</p>
+                                                    <p>风速</p>
+                                                    <p>PM2.5</p>
+                                                    <p>负氧离子</p>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <p id="main_box3_temp2">---</p>
+                                                    <p id="main_box3_wind2">---</p>
+                                                    <p id="main_box3_pm25">---</p>
+                                                    <p id="main_box3_ion">---</p>
+                                                </div>
+                                                <div class="ui-block-c">
+                                                    <img id="main_box3_icon2" src="img\main_box3_icon2.png" style="margin-top:30px;" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box6">
+                                    <div class="box6-title">
+                                        <h4>短期预报</h4>
+                                    </div>
+                                    <div class="title-divider"></div>
+                                    <div class="box6_con">
+                                        <table class="box6-table">
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="lp-box">
+                                    <div class="lp-title">
+                                        <h4>景点预报</h4>
+                                    </div>
+                                    <div class="title-divider"></div>
+                                    <div id="jing_dian_yu_bao" class="lp-con">
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_1_name">第一景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_1_icon" src="img/weather/NA.png" />
+                                                <span id="jing_1_t">---℃</span>
+                                                <span id="jing_1_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_2_name">第二景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_2_icon" src="img/weather/NA.png" />
+                                                <span id="jing_2_t">---℃</span>
+                                                <span id="jing_2_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_3_name">第三景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_3_icon" src="img/weather/NA.png" />
+                                                <span id="jing_3_t">---℃</span>
+                                                <span id="jing_3_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_4_name">第四景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_4_icon" src="img/weather/NA.png" />
+                                                <span id="jing_4_t">---℃</span>
+                                                <span id="jing_4_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_5_name">第五景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_5_icon" src="img/weather/NA.png" />
+                                                <span id="jing_5_t">---℃</span>
+                                                <span id="jing_5_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_6_name">第六景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_6_icon" src="img/weather/NA.png" />
+                                                <span id="jing_6_t">---℃</span>
+                                                <span id="jing_6_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_7_name">第七景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_7_icon" src="img/weather/NA.png" />
+                                                <span id="jing_7_t">---℃</span>
+                                                <span id="jing_7_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_8_name">第八景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_8_icon" src="img/weather/NA.png" />
+                                                <span id="jing_8_t">---℃</span>
+                                                <span id="jing_8_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_9_name">第九景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_9_icon" src="img/weather/NA.png" />
+                                                <span id="jing_9_t">---℃</span>
+                                                <span id="jing_9_w">---</span>
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <span id="jing_10_name">第十景点</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <img id="jing_10_icon" src="img/weather/NA.png" />
+                                                <span id="jing_10_t">---℃</span>
+                                                <span id="jing_10_w">---</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar swiper-scrollbar-tianqiyubao">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" id="qingxinzhishu">
+                <div class="headerBar">
+                    <div class="ui-grid-b backToMain">
+                        <div class="ui-block-a">
+                            <!--                            <a href="#" data-inline="true" class="backToMain">-->
+                            <img src="img/backBtn.png" />
+                            <!--                            </a>-->
+                        </div>
+                        <div class="ui-block-b">
+                            <h4>清新指数</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_iframe_qingxinzhishu">
+                    <div class="swiper-container swiper-container-qingxinzhishu">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="box1">
+                                    <p>
+                                        <span id="qingxin_text">---</span>
+                                    </p>
+                                </div>
+                                <ul data-role="listview" id="qingxin_menu">
+                                    <li>
+                                        <a href="#" class="ui-btn" id="enviroBtn">
+                                            <img src="img/secondarymenu_con2.png" class="ui-li-icon">PM2.5实时数据
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="ui-btn" id="ionBtn">
+                                            <img src="img/secondarymenu_con3.png" class="ui-li-icon">负氧离子实时数据
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="qingxin-detail">
+                                    <h4>清新指数</h4>
+                                    <p>“清新指数”是国际公认的空气清洁度标准，通过负氧离子和PM2.5等对环境的综合影响指标判定。负氧离子有清新空气的作用，称“空气维生素”，在空气中含量浓度越高，越有利于人体的身心健康，头脑清新，呼吸舒畅。Pm2.5是指空气中悬浮直径小于等于 2.5微米的细微颗粒物。它能较长时间悬浮于空气中，其在空气中含量浓度越高，说明空气污染越严重。清新指数发布，一般分为四个等级：</p>
+                                    <ul>
+                                        <li>一级，非常清新。</li>
+                                        <li>二级，清新。</li>
+                                        <li>三级，比较清新。</li>
+                                        <li>四级，不清新。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar swiper-scrollbar-qingxinzhishu"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" id="shushizhishu">
+                <div class="headerBar">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a backToMain">
+                            <img src="img/backBtn.png" />
+                        </div>
+                        <div class="ui-block-b">
+                            <h4>舒适指数</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="div_iframe_shushizhishu" style="position:relative;">
+                    <div class="swiper-container swiper-container-shushizhishu">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="box1">
+                                    <p>
+                                        <span id="shushi_text">---</span>
+                                    </p>
+                                </div>
+                                <ul data-role="listview" id="shushi_menu">
+                                    <li>
+                                        <a href="#" class="ui-btn" id="tempBtn">
+                                            <img src="img/secondarymenu_con2.png" class="ui-li-icon">温度实时数据
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="shushi-detail">
+                                    <h4>舒适度</h4>
+                                    <p>根据气温和湿度等对人体的综合影响，反应出多数人群在某种温、湿度条件下对该环境感觉舒适的程度。舒适度指数发布，一般分为九个等级：</p>
+                                    <ul>
+                                        <li>负四级，人体感觉很冷，极不适应，应尽量减少外出，并采取有效保暖防冻措施，防止冻伤。</li>
+                                        <li>负三级，人体感觉冷，很不舒适，要采取保暖措施，抵御严寒。</li>
+                                        <li>负二级，人体感觉凉，不舒适，要适当采取保暖措施，增强御寒能力。</li>
+                                        <li>负一级，人体感觉凉爽，较舒适，体质较差的朋友，要适当增添衣服，防止感冒。</li>
+                                        <li>零级，人体感觉舒适，最可接受。</li>
+                                        <li>一级，人体感觉温暖，较舒适，体质较差的朋友，要注意室内通风，防止受热。</li>
+                                        <li>二级，人体感觉暖，不舒适，要适当采取降温措施，谨防中暑。</li>
+                                        <li>三级，人体感觉热，很不舒适，要采取降温措施，防止中暑。</li>
+                                        <li>四级，人体感觉很热，极不适应，应尽量不要外出，并采取有效防暑降温措施，积极预防中暑。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar swiper-scrollbar-shushizhishu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" id="youjianghuodong">
+                <div class="headerBar">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a backToMain">
+                            <img src="img/backBtn.png" />
+                        </div>
+                        <div class="ui-block-b">
+                            <h4>有奖活动</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div id="youjiang_tishi" style="font-size:20px;text-align:center;display:none;">
+                    有奖活动暂未开放，敬请期待。
+                </div> -->
+                <div id="div_iframe_youjianghuodong">
+                    <div class="swiper-container swiper-container-youjianghuodong">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="img/youjiangimg/1.png" id="shan-img" />
+                                <img src="img/youjiangimg/2.png" id="sorry-img" />
+                                <div class="banner">
+                                    <div class="turnplate">
+                                        <canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+                                        <img class="pointer" src="img/youjiangimg/turnplate-pointer2.png" />
+                                    </div>
+                                </div>
+                                <div class="mingdan">
+                                    <h4>获奖名单</h4>
+                                    <div class="mingdan-th ui-grid-b">
+                                        <div class="ui-block-a">
+                                            <span>手机号码</span>
+                                        </div>
+                                        <div class="ui-block-b">
+                                            <span>奖项（门票）</span>
+                                        </div>
+                                        <div class="ui-block-c">
+                                            <span>获奖时间</span>
+                                        </div>
+                                    </div>
+                                    <div class="mingdan-con">
+                                        <ul id="user_list_ul">
+                                            <!-- <li class="ui-grid-b">
+                                                <div class="ui-block-a"><span>13******899</span></div>
+                                                <div class="ui-block-b"><span>20闪币111</span></div>
+                                                <div class="ui-block-c"><span>7月29日13:00</span></div>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="canyu" id="huodong_intro" style="text-indent:2em;">
+                                    <!-- <h4>参与方式：</h4>
+                                    <p>本有奖活动仅限注册用户使用，通过客户端登陆,即可获得一次抽奖机会,每天一次,不可累加，当天有效；连续登陆20天可获得景区免费门票1张，景区门票系统随机发送；上传有关磐安县风景的照片至照片墙，每个月进行一次评选，前3名可获得免费门票1张。</p>
+                                    <h4>活动说明：</h4>
+                                    <p>1、抽中奖项或获得免费门票的用户，系统自动发送兑奖码，可直接到景区售票处兑换;</p>
+                                    <p>2、参与本次抽奖活动的景区有水下孔、舞龙峡、十八涡、灵江源4个景区，其中水下孔景区分景区门票和电梯门票2种，系统随机发送;</p>
+                                    <p>3、免费门票有效期为抽中奖项起一个月内有效，其中国家法定假日期间不可使用;</p>
+                                    <p>4、本有奖活动的最终解释权归磐安县气象局所有。</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar swiper-scrollbar-youjianghuodong"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed" id="footerMenu" data-fullscreen="true">
+        <div data-role="navbar">
+            <ul>
+                <li>
+                    <a id="jrtqBtn"><img src="img/jrtq_normal.png" />
+                        <br /><span style="line-height:20px;font-size:14px;">天气预报</span></a>
+                </li>
+                <li>
+                    <a id="qxzsBtn"><img src="img/qxzs_normal.png" />
+                        <br /><span style="line-height:20px;font-size:14px;">清新指数</span></a>
+                </li>
+                <li>
+                    <a id="sszsBtn"><img src="img/sszs_normal.png" />
+                        <br /><span style="line-height:20px;font-size:14px;">舒适指数</span></a>
+                </li>
+                <li>
+                    <a id="yjhdBtn"><img src="img/yjhd_normal.png" />
+                        <br /><span style="line-height:20px;font-size:14px;">有奖活动</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="cameraDialog">
+        <ul>
+            <li>
+                <input type="button" value="拍照" id="photoBtn1" />                    
+            </li>
+            <li>
+                <input type="button" value="从照片中选择" id="photoBtn2" />
+            </li>
+        </ul>
+    </div>
+    <div id="loginDialog">
+        <div class="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a backAndClose">
+                    <!--                            <a href="#" data-inline="true" class="backToMain">-->
+                    <img src="img/backBtn.png" />
+                    <!--                            </a>-->
+                </div>
+                <div class="ui-block-b">
+                    <h4>登录</h4>
+                </div>
+            </div>
+        </div>
+        <div>
+            <form method="post" action="" id="login_form">
+                <div class="user">
+                    <div class="input-reminder">用户名：</div>
+                    <input id="name" />
+                </div>
+                <div class="pwd">
+                    <div class="input-reminder">密码：</div>
+                    <input id="password" type="password" />
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a ui-grid-a">
+                        <div id="isAutoLogin" class="ui-block-a" onclick="checkIsAuto()">
+                            <img src="img/auto_login_yes.png" id="checkImage" />
+                            <span id="checkValue">true</span>
+                        </div>
+                        <div id="autoLoginTxt" class="ui-block-b">
+                            自动登录
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <a id="forgetPassword" href="#">找回密码？</a>
+                    </div>
+                </div>
+                <div class="ui-grid-a">
+                    <div class="login-box ui-block-a">
+                        <a data-role="button" id="loginBtn">登录</a>
+                    </div>
+                    <div class="register-box ui-block-b">
+                        <a data-role="button" id="registerBtn">注册</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="zhuceDialog">
+        <div class="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a backAndClose">
+                    <img src="img/backBtn.png" />
+                </div>
+                <div class="ui-block-b">
+                    <h4>注册</h4>
+                </div>
+            </div>
+        </div>
+        <div>
+            <form id="register_form">
+                <label for="name">请输入用户名：</label>
+                <input type="text" id="zhuce_name" name="name" />
+                <label for="phoneNum">请输入手机号码：</label>
+                <input type="text" id="phoneNum" name="phoneNum" />
+                <label for="password">请输入密码：</label>
+                <input name="password" id="zhuce_password" type="password" />
+                <label for="password2">请再次输入密码：</label>
+                <input type="password" name="zhuce_password2" id="zhuce_password2" />
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a data-role="button" id="confirmRegister">确认注册</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-role="button" id="cancleRegister">取消注册</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="zhongjiangDialog">
+        <div class="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a backAndClose">
+                    <img src="img/backBtn.png" />
+                </div>
+                <div class="ui-block-b">
+                    <h4>中奖通知</h4>
+                </div>
+            </div>
+        </div>
+        <div class="zhongjiang-con">
+            <ul class="zhongjiang-list" id="zhongjiang_list">
+                <!--  <li class="zhongjiang-list-item">
+                    <div class="zhongjiang-item-info">
+                        <div class="zhongjiang-item-title-bg" style="background-image:url(img/zhognjiang_bg1.png);">奖项</div>
+                        <div class="zhongjiang-item-text">
+                            <span class="zhongjiang-text-span1">中奖码：ADSCN-1111111111</span><br/>
+                            <span class="zhongjiang-text-span2">有效期：2015年12月31日</span>
+                        </div>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <div id="fankuiDialog">
+        <div class="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a backAndClose">
+                    <img src="img/backBtn.png" />
+                </div>
+                <div class="ui-block-b">
+                    <h4>意见反馈</h4>
+                </div>
+            </div>
+        </div>
+        <div class="fankui-divider"></div>
+        <div>
+            <textarea id="suggestion_txt" rows="5" placeholder="请留下您宝贵的建议或意见，我们会更加努力的！"></textarea>
+            <label>欢迎给我们提供宝贵意见</label>
+            <textarea id="contact_txt" rows="2" placeholder="联系方式：填写手机或者邮箱（选填）"></textarea>
+            <a href="#" data-role="button" id="subbmit">发送</a>
+        </div>
+    </div>
+    <div id="guanyuDialog">
+        <div class="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a backAndClose">
+                    <img src="img/backBtn.png" />
+                </div>
+                <div class="ui-block-b">
+                    <h4>关于我们</h4>
+                </div>
+            </div>
+        </div>
+        <div class="fankui-divider"></div>
+        <div class="guanyu-con">
+            <img id="tubiao" src="img/tubiao.png" />
+            <p class="app-title">清新空气</p>
+            <p class="banquan">———&nbsp;&nbsp;&nbsp;版权所有&nbsp;&nbsp;&nbsp;———</p>
+            <p class="banquan">
+                该软件版权为磐安县气象局所有，未经允许任何企业或个人不得以任何形式复制或传递。
+            </p>
+            <div>
+                <a class="telephone-a" href="tel:057984665802" data-role="button" data-inline="true">
+                    <div class="telephone-svg">
+                        <img src="img/telephone.png" />
+                    </div>
+                    <div class="telephone-num">
+                        <span>0579-84665802</span>
+                    </div>
+                </a>
+            </div>
+            <div class="erweima">
+                <a data-lightbox="erweima">
+                    <img id="erweima_download"/>
+                </a>
+            </div>
+            <p class="jishuzhichi">技术支持：杭州群迈科技有限公司</p>
+        </div>
+    </div>
+    <div id="bangzhuDialog">
+        <div class="swiper-container swiper-container-bangzhu">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/help_img/help_a.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/help_img/help_b.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/help_img/help_c.jpg" />
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-bangzhu"></div>
+        </div>
+    </div>
+    <div id="shikuangDialog">
+        <div class="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a" id="backToShikuang">
+                    <img src="img/backBtn.png" />
+                </div>
+                <div class="ui-block-b">
+                    <h4 id="shikuang_title"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="div_iframe" style="overflow:hidden">
+            <iframe width="100%" height="100%" frameborder="0" id="_iframe"></iframe>
+        </div>
+    </div>
+    <div id="uploadDialog">
+        <div class="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                </div>
+                <div class="ui-block-b">
+                    <h4>上传照片</h4>
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-a upload-con">
+            <div class="ui-block-a">
+                <img id="upload_success_image" src="img/all_bg_1.jpg"/>
+            </div>
+            <div class="ui-block-b">
+                <textarea id="upload_success_comment" placeholder="说点什么吧..." rows="5"></textarea>
+            </div>
+        </div>
+        <div></div>
+        <div class="ui-grid-a upload-operate">
+            <div class="ui-block-a">
+                <a href="#" data-role="button" id="yes">上传</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" data-role="button" id="no">关闭</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    var backbg_index = 0;
+    setInterval(function() {
+        $("#bg_" + (backbg_index % 8)).fadeOut();
+        $("#bg_" + ((backbg_index + 1) % 8)).fadeIn();
+        backbg_index++;
+    }, 15000);
+
+    function checkIsAuto() {
+        var value = document.getElementById("checkValue").innerHTML;
+        if (value == "true") {
+            document.getElementById("checkImage").src = "img/auto_login_no.png";
+            document.getElementById("checkValue").innerHTML = "false";
+        } else {
+            document.getElementById("checkImage").src = "img/auto_login_yes.png";
+            document.getElementById("checkValue").innerHTML = "true";
+        }
+    }
+
+
+
+    /*var show_ion=0;
+    setInterval(function(){
+        if(show_ion%2==0){
+            $("#main_box4_ion2_xihu").hide();
+            $("#main_box4_ion2_xixi").show();
+        }else{
+            $("#main_box4_ion2_xihu").show();
+            $("#main_box4_ion2_xixi").hide();
+        }
+        show_ion++;                    
+    },5000);*/
+    </script>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <script src="js/load.js"></script>
+    <script type="text/javascript">
+    /*loadJsCssFileRelToLoadJs("cordova.js", "js");  
+            loadJsCssFileRelToLoadJs("jquery-1.11.2/jquery.js","js");
+            loadJsCssFileRelToLoadJs("jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js", "js");*/
+    loadJsCssFileRelToLoadJs("swiper/swiper.min.js", "js");
+    // loadJsCssFileRelToLoadJs("fusioncharts/fusioncharts.js", "js");
+    // loadJsCssFileRelToLoadJs("fusioncharts/fusioncharts.theme.fint.js", "js");
+    loadJsCssFileRelToLoadJs("per/ex/Class.js", "js");
+    loadJsCssFileRelToLoadJs("per/ex/Utils.js", "js");
+    loadJsCssFileRelToLoadJs("per/ex/ArrayUtils.js", "js");
+    loadJsCssFileRelToLoadJs("per/ex/DateUtils.js", "js");
+    loadJsCssFileRelToLoadJs("per/ex/StringUtils.js", "js");
+    loadJsCssFileRelToLoadJs("per/class/camera.js", "js");
+
+    loadJsCssFileRelToLoadJs("ajaxfileupload/ajaxfileupload.js", "js");
+    loadJsCssFileRelToLoadJs("store.js/store.js", "js");
+    loadJsCssFileRelToLoadJs("store.js/local_store.js", "js");
+
+    loadJsCssFileRelToLoadJs("../js/cehuajs/classie.js", "js");
+    // loadJsCssFileRelToLoadJs("../js/easydialog/easydialog.min.js", "js");
+    loadJsCssFileRelToLoadJs("../js/blockUI/blockUI.js", "js");
+    loadJsCssFileRelToLoadJs("../js/lightbox/lightbox.js", "js");
+    loadJsCssFileRelToLoadJs("fakecrop/jquery.fakecrop.js", "js");
+    loadJsCssFileRelToLoadJs("../js/awardRotate.js", "js");
+    loadJsCssFileRelToLoadJs("../js/master.js", "js");
+    </script>
+</body>
+
+</html>

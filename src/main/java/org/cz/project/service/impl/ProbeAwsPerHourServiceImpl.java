@@ -26,9 +26,25 @@ public class ProbeAwsPerHourServiceImpl implements ProbeAwsPerHourService {
 		{
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("stationNum", stations.get(0).get("stationNum"));
-			List find = baseDao.find("from ProbeAwsPerHour p where p.stationNum=:stationNum order by p.id desc", map,0, 1);
+			List find = baseDao.find("from ProbeAwsPerHour p where p.stationNum=:stationNum and ext_concat(p.date, p.time) = (SELECT max(ext_concat(p0.date, p0.time)) from ProbeAwsPerHour p0) order by p.id desc", map,0, 1);
 			return (ProbeAwsPerHour) find.get(0);
 		}
 		return null;
+	}
+	@Override
+	@Transactional
+	public ProbeAwsPerHour getAreaLatestProbeAwsPerHour(String areaCode) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("areaCode", areaCode);
+		List find = baseDao.find("from ProbeAwsPerHour p where p.areaCode=:areaCode and ext_concat(p.date, p.time) = (SELECT max(ext_concat(p0.date, p0.time)) from ProbeAwsPerHour p0) order by p.id desc", map,0, 1);
+		return (ProbeAwsPerHour) find.get(0);
+	}
+	@Override
+	@Transactional
+	public ProbeAwsPerHour getStationNumLatestProbeAwsPerHour(String stationNum) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("stationNum", stationNum);
+		List find = baseDao.find("from ProbeAwsPerHour p where p.stationNum=:stationNum order by id desc", map,0, 1);
+		return (ProbeAwsPerHour) find.get(0);
 	}
 }

@@ -8,13 +8,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Fcst_Text_Local")
+@Table(name = "JhPanWeather.dbo.Fcst_Text_Local")
 @NamedQueries({ @NamedQuery(name = "FcstTextLocal.findAll", query = "SELECT g FROM FcstTextLocal g")})
 public class FcstTextLocal extends IdEntity {
-	private int date;
+	private Integer date;
 	private String time;
 	private String stationnum;
-	private int fcst_type;
+	private Integer fcst_type;
 	private String fcst_title;
 	private String fcst_text;
 	private Date renewTime;
@@ -29,7 +29,7 @@ public class FcstTextLocal extends IdEntity {
 	public int getDate() {
 		return date;
 	}
-	public void setDate(int date) {
+	public void setDate(Integer date) {
 		this.date = date;
 	}
 	public String getTime() {
@@ -47,7 +47,7 @@ public class FcstTextLocal extends IdEntity {
 	public int getFcst_type() {
 		return fcst_type;
 	}
-	public void setFcst_type(int fcst_type) {
+	public void setFcst_type(Integer fcst_type) {
 		this.fcst_type = fcst_type;
 	}
 	public String getFcst_title() {

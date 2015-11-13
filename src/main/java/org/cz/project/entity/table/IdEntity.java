@@ -17,15 +17,15 @@ public class IdEntity implements Serializable{
 	private static final long serialVersionUID = 8983717485676331879L;
 
 	
-	private Integer id;
-	
 	@Id
 	@GeneratedValue
+	private Integer id;
+	
 	public Integer getId() {
 		return this.id;
 	}
 
-	protected void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

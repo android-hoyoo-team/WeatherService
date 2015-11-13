@@ -227,6 +227,10 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		{
 			_countQueryString="select count(*)"+hql.substring(_queryString.indexOf(" from "));
 		}
+		if(_queryString.indexOf("order")>0)
+		{
+			_countQueryString=_countQueryString.replaceAll("order\\sby\\s.*$", "");
+		}
 		List<T> list = find(hql,params,start,length);
 		Long count = this.count(_countQueryString,params);
 		if(start<=0)

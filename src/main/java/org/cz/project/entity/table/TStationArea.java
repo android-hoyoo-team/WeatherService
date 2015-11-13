@@ -9,7 +9,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 @Entity
-@Table(name = "T_Station_Area")
+@Table(name = "JhPanWeather.dbo.T_Station_Area")
 @NamedQueries({ @NamedQuery(name = "findAllTStationAreas", query = "SELECT g FROM TStationArea g")})
 public class TStationArea implements Serializable {
 	

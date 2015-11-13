@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+ 	<csrf disabled="true"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title></title>
@@ -14,6 +15,7 @@
     	//<!-- bootstrap -->
     	loadJsCssFileRelToLoadJs("bootstrap-3.3.0-dist/dist/css/bootstrap.css");
     	loadJsCssFileRelToLoadJs("bootstrap-3.3.0-dist/dist/js/bootstrap.min.js");
+    	loadJsCssFileRelToLoadJs("ajaxfileupload/ajaxfileupload.js");
     	
     	//<!-- lightbox -->
     	loadJsCssFileRelToLoadJs("lightbox/css/lightbox.css");
@@ -33,6 +35,19 @@
                     $("#con" + i).css("display", "none");
             }
             
+        }
+        function ajaxFileUpload() {
+        	$.ajaxFileUpload({
+        				url : "/file_upload",
+        				secureuri : false,
+        				fileElementId : 'image_src',
+        				dataType : 'json',
+        				success : function(data) {
+//        						$("#text").show();
+        					console.info(data);
+        				}
+        	
+        			});
         }
     </script>
 </head>
@@ -93,7 +108,16 @@
         </div>          
     </div>
 
-    
-    
+	<input id="image_src" type="file" name="upfile" contentEditable="false"
+		accept="image/*" style="width: 448px; height: 22px; display: none"
+		onchange="ajaxFileUpload()" /></input>
+	<button id="change" type="button"
+		class="btn btn-default btn-lg col-md-2" onclick="image_src.click()">更换图片</button>
+	</div>
+	<form action="/file_upload" method="post"
+		enctype="multipart/form-data" runat="server">
+		<input id="File1" runat="server" name="UpLoadFile" type="file" /> <input
+			type="submit" name="Button1" value="Button" id="Button1" />
+	</form>
 </body>
 </html>

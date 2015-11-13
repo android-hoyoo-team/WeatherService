@@ -1,0 +1,69 @@
+﻿/* * {
+    color: white;
+    font-family: "微软雅黑";
+    text-shadow: none;
+    font-size: 12px;
+ 
+}
+#register{
+    background-image: url(../img/secondary_menu_bg.png);
+} */
+#register_form{
+    width:86%;
+    margin-left:7%;
+    margin-top:30px;
+}
+#register_form label{
+    color:#6f6f6f;
+    text-align: left;
+}
+#register_form .ui-input-text{
+    margin-bottom:15px;
+    background-color:white;
+}
+#register_form .ui-input-text input{
+    height:33px;
+    color: #535353;
+}
+#register_form .ui-btn{
+    height:38px;
+    padding:0px;
+    line-height:38px;
+    border-radius:2px;
+    color:white;
+    box-shadow:none;
+    border:none;
+    text-shadow:none;
+    width:90%;
+}
+#confirmRegister{
+    background-image:url(../img/confirm_register.png);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+#cancleRegister{
+    background-image:url(../img/cancle_register.png);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+/* #easyDialogBox{
+    padding:0px !important;
+    margin:0 auto !important;
+    top:80% !important;
+    left:10% !important;
+    background-color:transparent !important;
+    width:80% !important;
+}
+#easyDialogWrapper{
+    border:0px !important;
+    padding:0px !important;
+    width:100%;
+    background-color:transparent !important;
+}
+.easyDialog_content{
+    background-color:rgba(128, 128, 128,0.7) !important;
+}
+.easyDialog_text{
+    padding:10px !important;
+    text-align:center;
+} */

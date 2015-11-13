@@ -1,0 +1,43 @@
+﻿#secondaryMenu{
+    font-size:12px;
+    font-family:"微软雅黑";
+    font-weight:normal;
+    background:none;
+    background-image: url(../img/secondary_menu_bg.png);
+    background-repeat:repeat;
+}
+#secondaryMenuContent ul{
+    margin:0px;
+}
+#secondaryMenuContent ul a{
+    background:none;
+    background-color:white;
+    background-image: url(../img/secondary_arrow_left.png);
+    background-size: auto 12px;
+    background-position:90% center;
+    background-repeat: no-repeat;
+}
+#secondaryMenuContent ul a{
+    margin:0px;
+    color:rgb(70,70,70);
+    font-size:14px;
+    font-weight:normal;
+    line-height:22px;
+    padding-left:40px;
+    font-family:"微软雅黑";
+}
+#secondaryMenuContent ul a img{
+    height:50%;
+    max-height:none;
+    max-width:none;
+    width:auto;  
+    margin-right:8px;
+    top:25%;
+}
+
+#secondaryMenuContent ul a:hover{
+    background-color:#f5f3f3;
+}
+#secondaryMenuContent ul li{
+    margin-top:20px;
+}

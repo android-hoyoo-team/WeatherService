@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Probe_Aws_PerHour")
+@Table(name = "JhPanWeather.dbo.Probe_Envi_PerHour")
 @NamedQueries({ @NamedQuery(name = "findAllProbeEnviPerHours", query = "SELECT g FROM ProbeEnviPerHour g")})
 public class ProbeEnviPerHour implements Serializable {
 		/**
@@ -19,7 +19,7 @@ public class ProbeEnviPerHour implements Serializable {
 	private static final long serialVersionUID = 1L;
 		@Id
 		private Integer Id;
-		private Date date;
+		private Integer date;
 		private String time;
 		private String areaCode;
 		private String stationNum;
@@ -39,10 +39,10 @@ public class ProbeEnviPerHour implements Serializable {
 		public void setId(Integer id) {
 			Id = id;
 		}
-		public Date getDate() {
+		public Integer getDate() {
 			return date;
 		}
-		public void setDate(Date date) {
+		public void setDate(Integer date) {
 			this.date = date;
 		}
 		public String getTime() {

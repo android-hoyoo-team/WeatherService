@@ -222,33 +222,9 @@ public class GsonUtil {
 //		//System.out.println(map.get("result"));
 		Map<?, ?> map = GsonUtil.jsonToMap(s);
 		
-		List<?> lists = GsonUtil.jsonToList(s, new Type(){
-			@Expose
-			private String status;
-			@Expose
-			private String message;
-//			@Expose
-//			private T result;
-			public String getStatus() {
-				return status;
-			}
-			public void setStatus(String status) {
-				this.status = status;
-			}
-			public String getMessage() {
-				return message;
-			}
-			public void setMessage(String message) {
-				this.message = message;
-			}
-//			public T getResult() {
-//				return result;
-//			}
-//			public void setResult(T result) {
-//				this.result = result;
-//			}
-			});
-		//System.out.println(list);
+		List<?> lists = GsonUtil.jsonToList(s, new com.google.gson.reflect.TypeToken<List<?>>() {  
+		}.getType());
+		System.out.println(list);
 	}
 
 }  

@@ -21,7 +21,7 @@ public class FcstFineCityServiceImpl implements FcstFineCityService{
 	public List<FcstTextLocal> getFcstFineCityByStationCode(String stationCode) {
 		Map<String ,Object> p=new HashMap<String, Object>();
 		p.put("stationCode", stationCode);
-		List find = baseDao.find("from FcstFineCity f where f.stationCode=:stationCode", p);
+		List find = baseDao.find("from FcstFineCity f where f.stationCode=:stationCode order by renewTime desc", p,0,1);
 		return find;
 	}
 	

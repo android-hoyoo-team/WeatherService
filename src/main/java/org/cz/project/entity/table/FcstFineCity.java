@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Fcst_Fine_City")
+@Table(name = "JhPanWeather.dbo.Fcst_Fine_City")
 @IdClass(FcstFineCityID.class)  
 @NamedQueries({ @NamedQuery(name = "FcstFineCity.findAll", query = "SELECT g FROM FcstFineCity g")})
 public class FcstFineCity implements Serializable{

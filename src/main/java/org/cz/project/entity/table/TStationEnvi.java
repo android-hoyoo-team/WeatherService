@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "T_Station_Envi")
+@Table(name = "JhPanWeather.dbo.T_Station_Envi")
 public class TStationEnvi implements Serializable {
 	@Id
 	private Integer id;

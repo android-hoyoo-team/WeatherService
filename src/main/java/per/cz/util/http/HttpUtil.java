@@ -57,5 +57,8 @@ public class HttpUtil {
 //			throw new RuntimeException(e);
 //		}
 //	}
+	public static void main(String[] args) {
+		System.out.println(",xx,".replaceAll(",$|^,", ""));
+	}
 
 }

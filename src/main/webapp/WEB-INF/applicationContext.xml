@@ -6,6 +6,7 @@
 	xmlns:jee="http://www.springframework.org/schema/jee" 
 	xmlns:lang="http://www.springframework.org/schema/lang"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -14,6 +15,7 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
 		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<bean id="propertyConfigurer"
@@ -159,10 +161,21 @@
 <!--         <context:exclude-filter type="annotation" expression=""/> -->
 <!--         <context:include-filter type="annotation" expression=""/> -->
     </context:component-scan>
+<!--  springMVC都会检查request里面是否包含多媒体信息，如果包含了就会使用MultipartResolver进行解析,
+springMVC会使用一个支持文件处理的MultipartHttpServletRequest来包裹当前的HttpServletRequest，
+然后使用MultipartHttpServletRequest就可以对文件进行处理了。Spring已经为我们提供了一个MultipartResolver的实现
+，我们只需要拿来用就可以了，那就是org.springframework.web.multipart.commons.CommsMultipartResolver。
+因为springMVC的MultipartResolver底层使用的是Commons-fileupload，所以还需要加入对Commons-fileupload.jar的支持 -->
+ <!--  这里申明的id必须为multipartResolver  -->  
     <bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- one of the properties available; the maximum file size in bytes 
-		<property name="maxUploadSize" value="10000000" />
-		-->
+<!-- CommonsMultipartResolver允许设置的属性有：
+    defaultEncoding：表示用来解析request请求的默认编码格式，当没有指定的时候根据Servlet规范会使用默认值ISO-8859-1。当request自己指明了它的编码格式的时候就会忽略这里指定的defaultEncoding。
+    uploadTempDir：设置上传文件时的临时目录，默认是Servlet容器的临时目录。
+    maxUploadSize：设置允许上传的最大文件大小，以字节为单位计算。当设为-1时表示无限制，默认是-1。
+ 	maxInMemorySize：设置在文件上传时允许写到内存中的最大值，以字节为单位计算，默认是10240。 -->
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="100000000" />
+		
 	</bean>
 </beans>

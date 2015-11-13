@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script src="js/load.js"></script>
+    <script type="text/javascript">
+        loadJsCssFileRelToLoadJs("../css/easydialog/easydialog.css", "css");
+        loadJsCssFileRelToLoadJs("jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css", "css");
+        loadJsCssFileRelToLoadJs("jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js", "js");
+        loadJsCssFileRelToLoadJs("../css/headerStyle.css", "css");
+        loadJsCssFileRelToLoadJs("../css/register.css", "css");
+        loadJsCssFileRelToLoadJs("../js/easydialog/easydialog.min.js", "js");
+		$(function () {
+			var localhost_weather= store.get('localhost_weather');
+			localhost_weather.user_info=localhost_weather.user_info||{};
+			$("#cancleRegister").click(function () {
+				setTimeout(function () {
+						location = "main2.html";
+				}, 1000);
+			});
+            $("#confirmRegister").click(function () {
+                //location = "loadmain.html"
+               
+				var name=$("#name").val();
+                var phoneNum=$("#phoneNum").val();
+				var password=$("#password").val();
+				var password2=$("#password2").val();
+                var phoneNum=$("#phoneNum").val();
+				if(name==null||name.length<=0)
+				{
+					//alert("用户名不能为空");
+				    //return;
+				    easyDialog.open({
+				        container: {
+				            content: '用户名不能为空'
+				        },
+				        autoClose: 2000,
+				        overlay: false
+				    });
+				    return;
+				}
+                if(phoneNum==null||phoneNum.length<=0)
+				{
+					//alert("用户名不能为空");
+				    //return;
+				    easyDialog.open({
+				        container: {
+				            content: '手机号码不能为空'
+				        },
+				        autoClose: 2000,
+				        overlay: false
+				    });
+				    return;
+				}
+				if(password==null||password.length<=0)
+				{
+					//alert("密码不能为空");
+				    //return;
+				    easyDialog.open({
+				        container: {
+				            content: '密码不能为空'
+				        },
+				        autoClose: 2000,
+				        overlay: false
+				    });
+				    return;
+				}
+				if(password2==null||password2.length<=0)
+				{
+					//alert("确认密码不能为空");
+				    //return;
+				    easyDialog.open({
+				        container: {
+				            content: '请再次输入密码'
+				        },
+				        autoClose: 2000,
+				        overlay: false
+				    });
+				    return;
+				}
+				if(password2!=password)
+				{
+					//alert("两次密码不一致");
+				    //return;
+				    easyDialog.open({
+				        container: {
+				            content: '两次密码不一致'
+				        },
+				        autoClose: 2000,
+				        overlay: false
+				    });
+				    return;
+				}
+				$.ajax({
+					 type:"GET",
+					 url:globle_url+"/save_user",
+					 data:{name:name,password:password,phone_num:phoneNum},
+					 dataType:'json',//"xml", "html", "script", "json", "jsonp", "text".
+					 beforeSend:function(){
+					 },
+					 success:function(data){
+						if(data&&data.status=="success")
+						{
+							//$("body").html("<img style='width:100%;height:100%;position:absolute;' src='img/pubuliu/4.jpg'/>");
+						    //alert("注册成功，请登录");
+						    easyDialog.open({
+						        container: {
+						            content: "注册成功，请登录"
+						        },
+						        autoClose: 2000,
+						        overlay: false
+						    });
+							localhost_weather.user_info.name=name;
+							store.set("localhost_weather",localhost_weather);
+							setTimeout(function () {
+								location = "index.html";
+							}, 1000);
+						}
+						else
+						{
+						    //alert(data.message);
+						    easyDialog.open({
+						        container: {
+						            content: data.message
+						        },
+						        autoClose: 2000,
+						        overlay: false
+						    });
+						    return;
+						}
+					 }
+				});
+
+            });
+		});
+    </script>
+</head>
+<body>
+    <div data-role="page" id="register">
+        <div data-role="header" id="headerBar">
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                    <a href="#" data-inline="true" data-rel="back">
+                        <!--<img src="img/action_bar_button.png" ismap />-->
+                        <img src="img/backBtn.png" />
+                    </a>
+                </div>
+                <div class="ui-block-b">
+                    <h4>注册</h4>
+                </div>
+            </div>
+        </div>
+        <div data-role="content">
+            <form class="register-form">
+                <label for="name">请输入用户名：</label>
+                <input type="text" id="name" name="name"/>
+                <label for="phoneNum">请输入手机号码：</label>
+                <input type="text" id="phoneNum" name="phoneNum"/>
+                <label for="password">请输入密码：</label>
+                <input name="password" id="password" type="password"/>
+                <label for="password2">请再次输入密码：</label>
+                <input type="password" name="password2" id="password2" />
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a data-role="button" id="confirmRegister">确认注册</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-role="button" id="cancleRegister">取消注册</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

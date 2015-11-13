@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../res/js/jquery-1.11.2/jquery.js"></script>
+	<script type="text/javascript">
+		/* window.onload = function() {
+			if (isWeiXin()) {
+				alert("当前是微信");
+				var p = document.getElementsByTagName('weixin');
+				p[0].innerHTML = "当前是微信扫描";
+			}
+			else
+			{
+					alert("当前b是微信");
+			}
+		} */
+		function isWeiXin() {
+			var ua = window.navigator.userAgent.toLowerCase();
+			if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function isQQ() {
+			var ua = window.navigator.userAgent.toLowerCase();
+			if (ua.match(/QQ/i) == 'qq') {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</head>
+    
+
+<body style="padding:0px;margin:0 auto;">	
+    <div style="width:100%;height:100%;background: -webkit-radial-gradient(RGB(35,175,234), RGB(0,71,137) );position:absolute;text-align:center;">
+        <p id="weixinRemind" style="font-size:12px;background:white;padding:10px;margin:0px;font-family:微软雅黑;display:none;text-align:left;">
+			微信内无法下载，请点击<font style="color:red;">右上角</font>按钮，选择<font style="color:red;">在浏览器中打开</font>即可查看下载
+		</p>
+		<p id="QQRemind" style="font-size:12px;background:white;padding:10px;margin:0px;font-family:微软雅黑;display:none;text-align:left;">
+			QQ内无法下载，请点击<font style="color:red;">右上角</font>按钮，选择<font style="color:red;">复制</font>并在浏览器打开,即可查看下载
+		</p>
+        <span id="weixin"></span>
+        <img id="login_logo" src="../res/img/tubiao.png" style="width:200px;height:auto;margin-top:45px;margin-bottom:20px;"/>
+        <div>            
+            <a onclick="return isWeiXin()?false:true;" href="http://220.191.230.13:8080/apk/get_latest_apk" style="width:250px;height:45px;background:-webkit-linear-gradient(#aeeb38, #67a425);border-radius:3px;border:none;display:inline-block;line-height:45px;text-decoration:none;color:#1e1e1e;font-family:微软雅黑;font-weight:bold;">下载Android版</a>
+        </div>
+        <div style="margin-top:30px;">            
+            <a type="button" href="https://appsto.re/cn/LVuN-.i" value="下载Ios版" style="width:250px;height:45px;background:-webkit-linear-gradient(#ffa200, #ec6e2f);border-radius:3px;border:none;display:inline-block;line-height:45px;text-decoration:none;font-family:微软雅黑;font-weight:bold;color:#1e1e1e;">下载IOS版</a>
+        </div>
+    </div>
+    <script>
+    	if(isWeiXin()){
+    		$("#weixinRemind").show();
+    	}
+    	else if(isQQ())
+    	{
+    		//$("#QQRemind").show();
+    	}
+    </script>
+</body>
+
+</html>

@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import per.cz.db.pool.impl.C3p0Pool;
-import per.cz.util.EncryptionUtil;
+import per.cz.util.encryption.EncryptionUtil;
 
 
 public class PoolListUtil {
@@ -59,7 +59,7 @@ public class PoolListUtil {
 	public static String getKey(String driver, String url, String user, String password)
 	{
 		String _key=driver.trim()+url.trim()+user+password;
-		String key = EncryptionUtil.getMd5(_key);
+		String key = EncryptionUtil.getMD5Base64(_key.getBytes());
 		return key;
 	}
 }

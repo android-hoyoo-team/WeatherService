@@ -9,7 +9,7 @@ import java.util.Properties;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import per.cz.db.pool.Pool;
-import per.cz.util.EncryptionUtil;
+import per.cz.util.encryption.EncryptionUtil;
 
 public class C3p0Pool implements Pool {
 	//	private static C3p0Pool dbPool;
@@ -115,7 +115,7 @@ public class C3p0Pool implements Pool {
 		if(_key==null)
 		{
 			String _key=this.getDriver().trim()+this.getUrl().trim()+this.getUser()+this.getPassword();
-			this._key=EncryptionUtil.getMd5(_key);
+			this._key=EncryptionUtil.getMD5Base64(_key.getBytes());
 		}
 		return _key;
 	}

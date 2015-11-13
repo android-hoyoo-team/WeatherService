@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
+	<!-- http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd -->
+	<!-- <bean id="loginInterceptor" class="org.cz.project.interceptor.UserPrivilegeInterceptor"></bean> -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"> -->
+	<!-- <property name="interceptors"> -->
+	<!-- <list> -->
+	<!-- <ref bean="loginInterceptor"/> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+		<mvc:interceptors>
+		    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 --> 
+		<mvc:interceptor>
+			<!-- 
+				1.首先<resources mapping="/**" location="/" />所有资源都放行 
+				2.通过静态资源拦截来过滤资源
+				-->
+			<mvc:mapping path="/**" />
+			<bean class="org.cz.project.interceptor.StaticResourceInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+				<!-- 默认所有的请求都进行拦截 -->
+			<mvc:mapping path="/**" />
+			<bean class="org.cz.project.interceptor.GlobalInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+				<!-- 默认所有的请求都进行拦截 -->
+			<mvc:mapping path="/**" />
+			<bean class="org.cz.project.interceptor.AdminPrivilegeInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>

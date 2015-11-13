@@ -14,15 +14,15 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<filter>
-		<filter-name>csrfFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		<async-supported>true</async-supported>
-	</filter>
-	<filter-mapping>
-		<filter-name>csrfFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+<!-- 	<filter> -->
+<!-- 		<filter-name>csrfFilter</filter-name> -->
+<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 		<async-supported>true</async-supported> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>csrfFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
     
 	<!-- Processes application requests -->
 	<servlet>
@@ -30,7 +30,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/applicationContext.xml /WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>/WEB-INF/applicationContext.xml /WEB-INF/spring/interceptors.xml /WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
@@ -38,9 +38,17 @@
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
+<!-- 	映射所有路径，效果：webapp下的资源除了jsp都不能直接访问 -->
 		<url-pattern>/</url-pattern>
+<!-- 	映射所有路径，效果：webapp下的资源包括jsp都不能直接访问 -->
+<!-- 	<url-pattern>/*</url-pattern> -->
+<!-- 	映射/paga/*的路径，同时映射*.jsp的路径，效果：page下的所有文件都不能直接访问，包括jsp -->
+<!-- 	<url-pattern>/page/login/*</url-pattern> -->
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/static/*</url-pattern>
+	</servlet-mapping>
 	<!-- Disables Servlet Container welcome file handling. Needed for compatibility with Servlet 3.0 and Tomcat 7.0 -->
 	<welcome-file-list>
 		<welcome-file></welcome-file>

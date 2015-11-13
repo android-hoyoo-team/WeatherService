@@ -104,3 +104,7 @@ loadJsCssFileRelToLoadJs("_per/ex/ArrayUtils.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/DateUtils.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/StringUtils.js","js");
 loadJsCssFileRelToLoadJs("jquery-1.11.2/jquery.js","js");
+loadJsCssFileRelToLoadJs("messenger/build/js/messenger.min.js", "js");
+loadJsCssFileRelToLoadJs("messenger/build/js/messenger-theme-future.js", "js");
+loadJsCssFileRelToLoadJs("messenger/build/css/messenger.css", "css");
+loadJsCssFileRelToLoadJs("messenger/build/css/messenger-theme-future.css", "css");

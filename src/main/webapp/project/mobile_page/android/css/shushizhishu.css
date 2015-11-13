@@ -1,0 +1,81 @@
+﻿
+#shushizhishu .box1{
+            text-align: center;
+        /*background-color:rgba(29,34,38,0.5);*/
+        background-color:rgba(255,255,255,0.3);
+        margin: 5px;
+        border-radius:3px; 
+       
+        }
+/*#shushizhishu .box1 img {
+            width: auto;
+            max-height: 25px;
+            margin-top: 20px;
+        }*/
+        #shushizhishu .box1 span{      
+            /*font-size:18px;  
+            color:rgb(70,70,70);*/ 
+            font-size:20px;      
+        }
+    #shushizhishu #menu {
+        margin: 0px;
+    }
+
+        #shushizhishu #menu a {
+            background: none;
+            /*background-color: white;*/
+            background-image: url(../img/secondary_arrow_left.png);
+            background-size: auto 12px;
+            background-position: 90% center;
+            background-repeat: no-repeat;
+            border-radius:3px;    
+            margin: 0px 5px;  
+            /*color: rgb(70,70,70);*/
+            color:white;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 22px;
+            padding-left: 40px;
+            font-family: "微软雅黑";
+            /*background-color:rgba(29,34,38,0.5);*/
+            background-color:rgba(255,255,255,0.3);
+            text-shadow:none;
+            border:none;
+        }
+
+            #shushizhishu #menu a img {
+                height: 50%;
+                max-height: none;
+                max-width: none;
+                width: auto;
+                margin-right: 8px;
+                top: 25%;
+            }
+
+            #shushizhishu #menu a:hover {
+                /*background-color: #f5f3f3;*/
+                 background-color:rgba(0,0,0,0.5);
+            }
+
+        #shushizhishu #menu li {
+            margin-top: 20px;
+        }
+        #shushizhishu .shushi-detail{
+			margin:5px;
+		}
+		#shushizhishu .shushi-detail h4{
+			font-size:16px;
+			font-weight:600;
+		}
+		#shushizhishu .shushi-detail ul{
+			padding-left:20px;
+		}
+		#shushizhishu .shushi-detail p{
+			text-indent:2em;
+			line-height:20px;
+			font-size:14px;
+		}
+		#shushizhishu .shushi-detail li{
+			line-height:20px;
+			font-size:14px;
+		}

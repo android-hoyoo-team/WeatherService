@@ -13,23 +13,23 @@ public class Result<T> {
 	@Expose
 	private T result;
 	
-	private T total;
+//	private T total;
 	
 	
 	
 
-	public T getTotal() {
-		return total;
-	}
-	public void setTotal(T total) {
-		this.total = total;
-	}
+//	public T getTotal() {
+//		return total;
+//	}
+//	public void setTotal(T total) {
+//		this.total = total;
+//	}
 	public Result(String status, String message, T result, T total) {
 		super();
 		this.status = status;
 		this.message = message;
 		this.result = result;
-		this.total = total;
+//		this.total = total;
 	}
 	public Result() {
 		super();
