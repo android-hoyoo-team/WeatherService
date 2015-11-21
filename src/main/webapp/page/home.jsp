@@ -1167,6 +1167,7 @@
             <li><a href="#tabs-4">意见反馈</a></li>
             <li><a href="#tabs-5">参数配置</a></li>
             <li><a href="#tabs-6">应用升级</a></li>
+            <li><a href="#tabs-7">修改密码</a></li>
         </ul>
         <div id="tabs-1">
             <table id="table_all_users" class="display" cellspacing="0" width="100%"></table>
@@ -1279,6 +1280,25 @@
 <!--                     <button id="background_change" type="button" class="btn btn-default btn-lg col-md-2" onclick="background_image_src.click();" >更换背景图片</button> -->
 <!--                 </div> -->
             </fieldset>
+         </div>
+         <div id="tabs-7">
+             <form action="" style="text-align:center;">
+                <div>
+                    <label for="" style="display:inline-block;width:150px;text-align:right;line-height:40px;">请输入旧密码：</label>
+                    <input type="password" id="old-pwd" style="height:25px;:200px;">
+                </div>
+                <div>
+                    <label for="" style="display:inline-block;width:150px;text-align:right;line-height:40px;">请输入新密码：</label>
+                    <input type="password" id="new-pwd" style="height:25px;:200px;">
+                </div>
+                <div>
+                    <label for="" style="display:inline-block;width:150px;text-align:right;line-height:40px;">请再次输入新密码：</label>
+                    <input type="password" id="new-pwd2" style="height:25px;:200px;">
+                </div>
+                <div style="margin-top:10px;">
+                    <input type="submit" value="确认修改密码" style="height:30px;width:100px;">
+                </div>
+             </form>
          </div>
     </div>
     </div>
