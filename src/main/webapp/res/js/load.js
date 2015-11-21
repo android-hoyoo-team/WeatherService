@@ -100,6 +100,7 @@ loadJsFileRelToLoadJs_async = function(path,callBack,check) {
 //});
 loadJsCssFileRelToLoadJs("_per/ex/Class.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/Utils.js","js");
+loadJsCssFileRelToLoadJs("_per/ex/ajax.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/ArrayUtils.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/DateUtils.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/StringUtils.js","js");

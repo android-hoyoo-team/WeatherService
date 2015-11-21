@@ -46,6 +46,7 @@ public class AwardsController {
 	public Result getRUsersAwards(HttpServletRequest request,HttpServletResponse response){
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		Map<String, String> params = HttpUtil.getParameters(request, "utf-8");
+		Map<String, Object> param=new HashMap<String, Object>();
 		Result<Object> result=new Result<Object>();
 		String _page=params.get("page");
 		String _size=params.get("size");
@@ -59,6 +60,32 @@ public class AwardsController {
 		String serial_number=params.get("serial_number");
 		String _out_of_date =params.get("out_of_date");
 		String _exchange =params.get("exchange");
+		
+		HttpSession session = request.getSession();
+		Object _loginInfo = session.getAttribute("user_info");
+		if(_loginInfo!=null)
+		{
+			UserInfo u=(UserInfo) _loginInfo;
+			params.put("user_info", u.getType());
+			if(u.getType().equals("manager"))
+			{
+				ManagerUsers m_user=(ManagerUsers) u.getUsers();
+				String tag=m_user.getTag();
+				if(!"0".equals(tag))
+				{
+					param.put("tag", tag);
+				}
+			}
+		}
+		
+//		UserInfo u=(UserInfo) _loginInfo;
+//		else
+//		{
+//			
+//		}
+		
+		
+		
 //		boolean out_of_date=false;
 		int user_id=0;
 		if(_out_of_date==null||_out_of_date.trim().length()<=0)
@@ -106,7 +133,7 @@ public class AwardsController {
 			return result;
 		}
 		try{
-			Map<String, Object> param=new HashMap<String, Object>();
+			
 			param.put("awards", _awards);
 			param.put("no_awards", "false");
 			param.put("out_of_date", _out_of_date);
@@ -121,6 +148,7 @@ public class AwardsController {
 				param.put("order", _order.trim());
 			if(_sort!=null&&_sort.trim().length()>=0)
 				param.put("sort", _sort);
+
 			QueryResult<Map> findByParam = rUserAwardsService.findByParam4Page(param, page, size);
 			if(findByParam!=null)
 			{
@@ -205,7 +233,7 @@ public class AwardsController {
 			return result;
 		}
 		ManagerUsers m_user=(ManagerUsers) u.getUsers();
-		
+		String tag=m_user.getTag();
 		Map<String, String> params = HttpUtil.getParameters(request, "utf-8");
 		
 		String user_name=params.get("user_name");
@@ -256,6 +284,12 @@ public class AwardsController {
 			return result;
 		}
 		RUserAwards rUserAwards = findByParam.getResult().get(0);
+		if(!tag.equals(rUserAwards.getTag()))
+		{
+			result.setMessage("没有权限兑换");
+			result.setStatus("error");
+			return result;
+		}
 		if(rUserAwards.getNo_awards().equals("true"))
 		{
 			result.setMessage("并没有中奖");
@@ -400,6 +434,7 @@ public class AwardsController {
 		{
 			rUserAwards.setNo_awards("false");
 		}
+		rUserAwards.setTag(g_awards.getTag());
 		rUserAwards.setUserId(user_id);
 		long time=24*60*90;//90天
 		BaseSysInfo keepTimeInfo = baseSysInfoService.findByTypeAndKey("sys", "awards_keep_time");

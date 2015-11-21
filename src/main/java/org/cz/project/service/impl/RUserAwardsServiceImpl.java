@@ -98,12 +98,15 @@ public class RUserAwardsServiceImpl implements RUserAwardsService {
 			int page, int size) {
 		if(param==null)
 			param=new HashMap<String, Object>();
-		String hql="select new map(r.exchange as exchange,r.serialNumber as serialNumber,r.no_awards as no_awards,r.type as type,r.expirationTime as expirationTime,r.id as id, r.awards as awards,r.userId as userId ,u.phoneNum as phoneNum,u.name as name,r.addTime as addTime)  from RUserAwards r ,Users u where  r.userId = u.id :userId: :serial_number: :name: :awards: :no_awards: :out_of_date: :exchange: order by :sort: :order:";
+		String hql="select new map(r.exchange as exchange,r.serialNumber as :serialNumber:,r.no_awards as no_awards,r.type as type,r.expirationTime as expirationTime,r.id as id, r.awards as awards,r.userId as userId ,u.phoneNum as phoneNum,u.name as name,r.addTime as addTime)  from RUserAwards r ,Users u where  r.userId = u.id :userId: :serial_number: :name: :awards: :tag: :no_awards: :out_of_date: :exchange: order by :sort: :order:";
 		hql=hql.replace(":userId:",param.get("user_id")==null?"":"and userId=:user_id ");
 		hql=hql.replace(":awards:",param.get("awards")==null?"":"and awards=:awards ");
 		hql=hql.replace(":name:",param.get("user_name")==null?"":"and name like '%"+param.get("user_name")+"%' ");
+		hql=hql.replace(":serialNumber:","manager".equals(param.get("user_info"))?"0":"serialNumber ");
+		
 		hql=hql.replace(":serial_number:",param.get("serial_number")==null?"":"and serialNumber =:serial_number ");
 		hql=hql.replace(":no_awards:",param.get("no_awards")==null?"":"and no_awards=:no_awards");
+		hql=hql.replace(":tag:",param.get("tag")==null?"":"and tag=:tag");
 		String _out_of_date="";
 		if(param.get("out_of_date")==null||param.get("out_of_date").toString().trim().equals("all"))
 		{

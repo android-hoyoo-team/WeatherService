@@ -80,7 +80,7 @@ public class DateUtil {
 		 * @param end
 		 * @return
 		 */
-		public static int getDays(Date start,Date end)
+		public static int getDayDiff(Date start,Date end)
 		{
 			return (int) ((start.getTime()-end.getTime())/1000/60/60/24);
 		}
@@ -100,9 +100,8 @@ public class DateUtil {
 			return ca.getTimeInMillis();
 		}
 		/**
-		 * 获取 start 到 end 中有多少天
-		 * @param start
-		 * @param end
+		 * 是否是今天
+		 * @param date
 		 * @return
 		 */
 		public static boolean  isToday(Date date)
@@ -162,6 +161,13 @@ public class DateUtil {
 			}
 			return tag;
 		}
+		/**
+		 * 获取指定日期在指定时间长度之后的日期。
+		 * @param date
+		 * @param calendarField  Calendar.DATE,Calendar.YEAR等
+		 * @param amount
+		 * @return
+		 */
 	    public static Date add(Date date, int calendarField, int amount) {
 	        if (date == null) {
 	            throw new IllegalArgumentException("The date must not be null");
@@ -186,6 +192,7 @@ public class DateUtil {
 			Date date = new Date();
 			//date.setDate(date.getDate());
 			System.out.println(add(date,Calendar.DATE,-1));
+			System.out.println(getDayDiff(date,addDate(add(date,Calendar.MINUTE,0), 1)));
 			System.out.println(addDate(date, -1));
 			Calendar ca = Calendar.getInstance();
 			System.out.println(DateUtil.isToday(date));

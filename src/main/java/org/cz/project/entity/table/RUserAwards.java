@@ -22,6 +22,13 @@ public class RUserAwards extends IdEntity {
 	private Long addTime;
 	private Long updateTime;
 	private Long deadTime;
+	private String tag; 
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 	public String getType() {
 		return type;
 	}

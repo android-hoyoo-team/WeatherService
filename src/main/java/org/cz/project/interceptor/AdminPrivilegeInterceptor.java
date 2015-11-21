@@ -32,7 +32,7 @@ public class AdminPrivilegeInterceptor extends HandlerInterceptorAdapter {
 		forbidList.add("/save_user_images");
 		forbidList.add("/update_user_images_status");
 		//forbidList.add("/save_user");
-		//forbidList.add("/admin/save_user");
+		forbidList.add("/admin/save_user");
 		//forbidList.add("/admin/login");
 		forbidList.add("/save_sys_key_value");
 		forbidList.add("/get_all_users");

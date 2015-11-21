@@ -44,8 +44,9 @@ public class OtController {
 		//response.setStatus(403);
 		Result result=new Result();
 		result.setMessage("没有权限，请登录或联系管理员");
-		result.setStatus("error");
+		result.setStatus("403");
 		response.setHeader("Location", "/");
+		response.setStatus(response.SC_FORBIDDEN);
 		response.setHeader("Refresh","2;URL=/");
 		return result;
 	}

@@ -95,4 +95,51 @@ public class ManagerUserController {
 		result.setStatus("success");
 		return result;		
 	}
+	@RequestMapping(value="/change_password", method=RequestMethod.GET)
+	@ResponseBody
+	public Result changePassword(HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		Map<String, String> params = HttpUtil.getParameters(request, "utf-8");
+		Result<Object> result=new Result<Object>();
+		String _old_password=params.get("old_password");
+		String _password=params.get("password");
+		if(_old_password==null||_password==null||_old_password.trim().length()<=0||_password.trim().length()<=0)
+		{
+			result.setStatus("error");
+			result.setMessage("用户名或者密码不能为空");
+			return result;
+		}
+		HttpSession session = request.getSession();
+		Object _loginInfo = session.getAttribute("user_info");
+		if(_loginInfo==null)
+		{
+			result.setMessage("请登陆后进行操作。");
+			result.setStatus("error");
+			return result;
+		}
+		UserInfo u=(UserInfo) _loginInfo;
+		if(!u.getType().equals("manager"))
+		{
+			result.setMessage("请登陆后进行操作。");
+			result.setStatus("error");
+			return result;
+		}
+		ManagerUsers m_user=(ManagerUsers) u.getUsers();
+		ManagerUsers findByName = managerUserService.findByName(m_user.getName(),_password);
+		if(findByName==null)
+		{
+			result.setMessage("原始密码密码错误");
+			result.setStatus("error");
+			return result;
+		}
+		findByName.setPassword(_password);
+		managerUserService.update(findByName);
+		UserInfo<ManagerUsers> userInfo = new UserInfo<ManagerUsers>("manager",findByName);
+		session.setAttribute("user_info", userInfo);
+		findByName.setPassword(null);
+		result.setResult(findByName);
+		result.setMessage("密码修改成功");
+		result.setStatus("success");
+		return result;		
+	}
 }

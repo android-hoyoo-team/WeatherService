@@ -1,5 +1,6 @@
 package org.cz.project.entity.table;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -14,6 +15,14 @@ public class ManagerUsers extends IdEntity {
 	private Long addTime;
 	private Long updateTime;
 	private Long deadTime;
+	@Column(name="tag",columnDefinition = "varchar(16) default '0'")//sql server 
+	private String tag;
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 	public String getName() {
 		return name;
 	}

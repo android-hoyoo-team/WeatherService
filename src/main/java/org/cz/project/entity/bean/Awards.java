@@ -7,6 +7,13 @@ public class Awards {
 	private String img;//图片
 	private boolean no_aw;//没有奖品标识
 	private double ran;//概率 0..1
+	private String tag="0";
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 	public int getIndex() {
 		return index;
 	}

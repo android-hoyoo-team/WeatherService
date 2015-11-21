@@ -57,7 +57,10 @@ $(document).ready(function() {
 					}
 					if(data.status=='success')
 					{
-						location.href="home.jsp";
+						if(data.result.tag=="0")
+							location.href="home.jsp";
+						else
+							location.href="home0.jsp";
 					}
 				},
                 error:function(data)
