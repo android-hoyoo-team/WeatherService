@@ -95,6 +95,18 @@ public class ManagerUserController {
 		result.setStatus("success");
 		return result;		
 	}
+	@RequestMapping(value="/login_out", method=RequestMethod.GET)
+	@ResponseBody
+	public Result loginOut(HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		Map<String, String> params = HttpUtil.getParameters(request, "utf-8");
+		Result<Object> result=new Result<Object>();
+		HttpSession session = request.getSession();
+		session.removeAttribute("user_info");
+		result.setMessage("登出成功");
+		result.setStatus("success");
+		return result;		
+	}
 	@RequestMapping(value="/change_password", method=RequestMethod.GET)
 	@ResponseBody
 	public Result changePassword(HttpServletRequest request,HttpServletResponse response){
