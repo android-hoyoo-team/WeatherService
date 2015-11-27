@@ -40,6 +40,7 @@ public class ManagerUserServiceImpl implements ManagerUserService {
 	@Transactional
 	public void update(ManagerUsers u) {
 		u.setUpdateTime(new Date().getTime());
+		u.setPassword(EncryptionUtil.getMD5Base64(u.getPassword().getBytes()));
 		baseDao.update(u);
 	}
 

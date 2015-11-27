@@ -1,4 +1,8 @@
-//use Util
+/*!
+ * Class.js
+ * Create By:huang.jl
+ * Date: 2014-10-28T16:19Z
+ */
 (function(global) {
 	
 })(window);
@@ -92,8 +96,14 @@ Util.extend=function (destination, source) {
 	return destination;
 };
 var NObject=Class({
-	initialize:function(){},
+	initialize:function(){
+		if(arguments.length>0)
+			Util.extend(this,arguments[0]);
+	},
 	__nid:null,
+	get:function(){
+		
+	},
 	get nid(){ 
 		if(this.__nid==null)
 			this.__nid=this._nid.index++;

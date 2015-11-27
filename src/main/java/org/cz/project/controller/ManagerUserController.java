@@ -137,7 +137,7 @@ public class ManagerUserController {
 			return result;
 		}
 		ManagerUsers m_user=(ManagerUsers) u.getUsers();
-		ManagerUsers findByName = managerUserService.findByName(m_user.getName(),_password);
+		ManagerUsers findByName = managerUserService.findByName(m_user.getName(),_old_password);
 		if(findByName==null)
 		{
 			result.setMessage("原始密码密码错误");

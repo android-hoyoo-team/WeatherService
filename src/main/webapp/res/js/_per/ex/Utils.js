@@ -208,6 +208,37 @@ Util.formatString = function (str) {
 	}
 	return str;
 };
+Util.format=function (str,obj,filter) {
+    if(obj)
+    {
+      filter=filter||{};
+      for(var k in obj)
+      {
+        var res=obj[k];
+        if(typeof(obj[k])=="function")
+        {
+          res=obj[k].apply(obj);
+        }
+        if(typeof(filter[k])=="function")
+        {
+          res=filter[k].apply(str,[k,obj]);
+        }
+        str=str.replace("{" + k + "}",res);
+      }
+    }
+    return str;
+  };
+/**
+ * "我的名字是{0},我来自{1},今年{1}岁。"
+ * formatString("我的名字是{0},我来自{1},今年{1}岁。","leo","山东",18)
+ * @returns 格式化字符串
+ */
+Util.formatStringFromArr = function (str,arr) {
+  for (var i = 0; i < arr.length - 1; i++) {
+    str = str.replace("{" + i + "}", arr[i]);
+  }
+  return str;
+};
 Util.getLocation=function(success)
 {
 	if (navigator.geolocation) {

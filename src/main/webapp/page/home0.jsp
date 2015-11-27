@@ -801,6 +801,47 @@
              });
              $("#fa_jiang_dialog").dialog("open");
         }
+        function change_password()
+        {
+        	var old_password = $("#old_pwd").val();
+            if(old_password==null||old_password.trim().length<=0)
+            {
+                show_message("原始密码不能为空",3);
+                return;
+            }
+            var password = $("#new_pwd").val();
+            if(password==null||password.trim().length<=0)
+            {
+                show_message("密码不能为空",3);
+                return;
+            }
+            $.ajax({
+                type:"GET",
+                url:"/admin/change_password",
+                data:{
+                	old_password:old_password,
+                	password:password
+                },
+                datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+                beforeSend:function(){
+                },
+                success:function(data){
+                    if(data.status=="success")
+                    {
+                        //updatePage(key,data.result.value); 
+                        show_message("修改成功",3);
+                    }
+                    else
+                    {
+                        show_message(data.message,10);
+                    }
+                },
+                complete: function(XMLHttpRequest, textStatus){
+                },
+                error: function(){
+                }         
+             });
+        }
     </script>
     <style>
     </style>
@@ -809,6 +850,7 @@
     <div id="tabs">
         <ul>
             <li><a href="#tabs-3">用户获奖</a></li>
+            <li><a href="#tabs-7">修改密码</a></li>
         </ul>
         <div id="tabs-3">   
         	<label><input name="t3_exchange" type="radio" value="true" />已兑 </label>
@@ -821,6 +863,21 @@
             </table>
             
         </div>
+        <div id="tabs-7">
+                  <div style="text-align:center;">
+                <div>
+                    <label for="" style="display:inline-block;width:150px;text-align:right;line-height:40px;">请输入旧密码：</label>
+                    <input type="password" id="old_pwd" style="height:25px;:200px;">
+                </div>
+                <div>
+                    <label for="" style="display:inline-block;width:150px;text-align:right;line-height:40px;">请输入新密码：</label>
+                    <input type="password" id="new_pwd" style="height:25px;:200px;">
+                </div>
+                <div style="margin-top:10px;">
+                    <input type="button" id="change_password" onclick="change_password();" value="确认修改密码" style="height:30px;width:100px;">
+                </div>
+             </div>
+         </div>
     </div>
     </div>
 	<div id="fa_jiang_dialog" title="发奖" style="display: none;">

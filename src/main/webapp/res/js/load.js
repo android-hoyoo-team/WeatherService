@@ -100,11 +100,11 @@ loadJsFileRelToLoadJs_async = function(path,callBack,check) {
 //});
 loadJsCssFileRelToLoadJs("_per/ex/Class.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/Utils.js","js");
-loadJsCssFileRelToLoadJs("_per/ex/ajax.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/ArrayUtils.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/DateUtils.js","js");
 loadJsCssFileRelToLoadJs("_per/ex/StringUtils.js","js");
 loadJsCssFileRelToLoadJs("jquery-1.11.2/jquery.js","js");
+loadJsCssFileRelToLoadJs("_per/ex/ajax.js","js");
 loadJsCssFileRelToLoadJs("messenger/build/js/messenger.min.js", "js");
 loadJsCssFileRelToLoadJs("messenger/build/js/messenger-theme-future.js", "js");
 loadJsCssFileRelToLoadJs("messenger/build/css/messenger.css", "css");
