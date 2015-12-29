@@ -43,11 +43,12 @@ public class ProbeEnviPerHourServiceImpl implements ProbeEnviPerHourService {
 	public Map getAvgAreaLatestProbeEnviPerHour(String areaCode) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("areaCode", areaCode);
-		String hql="SELECT new Map(AVG(p.pm25) as pm25) FROM ProbeEnviPerHour p where p.areaCode=:areaCode and  p.pm25 > 0 and ext_concat(p.date,p.time) = (SELECT Max(ext_concat(p0.date,p0.time)) FROM ProbeEnviPerHour p0)";
-		if(areaCode.equals("58560"))
-		{
-			hql="SELECT new Map(AVG(p.pm25) as pm25) FROM ProbeEnviPerHour p where p.areaCode=:areaCode and  p.pm25 > 0 and p.pm25 < 50 and ext_concat(p.date,p.time) = (SELECT Max(ext_concat(p0.date,p0.time)) FROM ProbeEnviPerHour p0)";
-		}
+		//String hql="SELECT new Map(AVG(p.pm25) as pm25) FROM ProbeEnviPerHour p where p.areaCode=:areaCode and  p.pm25 > 0 and ext_concat(p.date,p.time) = (SELECT Max(ext_concat(p0.date,p0.time)) FROM ProbeEnviPerHour p0)";
+		//if(areaCode.equals("58560"))
+		//{
+			//hql="SELECT cast(avg(Pm25) as decimal(10,1)) as Pm25 FROM Probe_Envi_PerHour where Areacode = '58560' and Pm25 between 0 and 200 and Pm25 <> 50  and cast(Date as varchar(8))+Time = (SELECT max(cast(Date as varchar(8))+Time) from Probe_Envi_PerHour where Areacode = '58560')";
+		String hql="SELECT new Map(cast_avg_decimal(p.pm25) as pm25) FROM ProbeEnviPerHour p where p.areaCode=:areaCode and  p.pm25 >= 0 and p.pm25 <= 200 and p.pm25 <> 50 and ext_concat(p.date,p.time) = (SELECT Max(ext_concat(p0.date,p0.time)) FROM ProbeEnviPerHour p0 where p0.areaCode=:areaCode)";
+		//}
 		List find = baseDao.find(hql, map,0, 1);
 		return (Map) find.get(0);
 	}

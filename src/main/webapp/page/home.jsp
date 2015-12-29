@@ -1280,7 +1280,7 @@
 	        </div>
 	        <div style="clear:both;">
 	            <input type="button" id="addItem_awards" onclick="addItem_awards();" value="新增奖品"/>
-	            <input type="button" id="init_awards" onclick="init_awards();" value="初始化"/>
+<!-- 	            <input type="button" id="init_awards" onclick="init_awards();" value="初始化"/> -->
 	        </div>
 	    </fieldset>
 	    <fieldset style="margin-top:20px;">

@@ -94,7 +94,7 @@ public class StringUtil {
 		StringBuffer sb=new StringBuffer();
 		System.out.println("\\100".replaceAll("\\\\", "\\\\\\\\"));
 		System.out.println("$xx".replaceAll("(\\$)", "\\$1"));
-		System.out.println("xxa.xx".replaceAll("(xx)(a)", "$1.html$2"));
+		System.out.println("xxa.xx".replaceAll("(xx)(a)", ".html$2$1"));
 		String s="<a href=\" /front/into/idea   \">企业理念</a></div><a href=\"/front/into/idea?name=sss&age=12\">其他</a></div>";
 		String reg="/front/into/idea?name=sss&age=12";
 		               // String reg="/front/into/idea";

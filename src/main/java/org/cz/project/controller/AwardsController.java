@@ -606,6 +606,7 @@ public class AwardsController {
 		rUserAwards.setExchange("false");
 		rUserAwards.setType("2");//管理员发奖
 		rUserAwards.setExpirationTime(new Date().getTime()+time);
+		rUserAwards.setTag(g_awards.getTag());
 //		rUserAwards.setDeadTime();
 		String serial=(DateUtil.date2Str(new Date(), "yyyyMMddHHmmss")+(Math.random()*100)).replaceAll("\\..*$", "");
 		rUserAwards.setSerialNumber(serial);

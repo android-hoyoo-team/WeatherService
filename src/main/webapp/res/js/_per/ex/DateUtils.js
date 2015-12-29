@@ -1,7 +1,7 @@
 ﻿DateUtils=typeof DateUtils =="undefined"?{}:DateUtils;
-Date.prototype.date2String= function (fmt,date) {
+DateUtils.date2String= function (fmt,date) {
 	if(date==null)
-		date=this;
+		date=new Date();
 	var o = {
 			"M+": date.getMonth() + 1, //月份
 			"d+": date.getDate(), //日
@@ -22,10 +22,10 @@ Date.prototype.date2String= function (fmt,date) {
 			"6": "/u516d"
 	};
 	if (/(y+)/.test(fmt)) {
-		fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+		fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
 	}
 	if (/(E+)/.test(fmt)) {
-		fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f" : "/u5468") : "") + week[this.getDay() + ""]);
+		fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f" : "/u5468") : "") + week[date.getDay() + ""]);
 	}
 	for (var k in o) {
 		if (new RegExp("(" + k + ")").test(fmt)) {
@@ -34,7 +34,7 @@ Date.prototype.date2String= function (fmt,date) {
 	}
 	return fmt;
 }
-Date.prototype.string2Date=function (fmt,dateStr) {
+DateUtils.string2Date=function (fmt,dateStr) {
 	var date=new Date();
 	var o = {
 			"y+":function(y){date.setYear(parseInt(y))},
@@ -57,16 +57,16 @@ Date.prototype.string2Date=function (fmt,dateStr) {
 	}
 	return date;
 }
-Object.defineProperty(Date.prototype,"string2Date",{ 
-	writable : false, 
-	enumerable : false, 
-	configurable :false 
-});
-Object.defineProperty(Date.prototype,"date2String",{ 
-	writable : false, 
-	enumerable : false, 
-	configurable :false 
-}); 
+//Object.defineProperty(Date.prototype,"string2Date",{ 
+//	writable : false, 
+//	enumerable : false, 
+//	configurable :false 
+//});
+//Object.defineProperty(Date.prototype,"date2String",{ 
+//	writable : false, 
+//	enumerable : false, 
+//	configurable :false 
+//}); 
 function main()
 {
 	console.log(new Date().pattern("hh:mm:ss yyyyy-MM-dd"));
